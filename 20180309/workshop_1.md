@@ -505,39 +505,39 @@ Una volta definita una classe è possibile .....
 
 ```python
 class stanza:
-    def __init__(lung, larg)
+    def __init__(self, lung, larg)
         self.lung = lung
         self.larg = larg
         self.nome = "stanza"
 
-    def nome():
+    def nome(self):
         return self.nome
 
-    def area():
+    def area(self):
         return self.lung * self.larg
 
 class cucina(stanza):
-    def __init__(lung, larg)
+    def __init__(self, lung, larg)
         super().__init__(lung, larg)
         self.nome = "cucina"
 
 class camera(stanza):
-    def __init__(lung, larg, abitante)
+    def __init__(self, lung, larg, abitante)
         super().__init__(lung, larg)
         self.nome = "bagno"
         self.abitante = abitante
 
 class edificio:
-    def __init__(stanze)
+    def __init__(self, stanze)
         self.stanze = stanze
 
-    def area_tot():
+    def area_tot(self):
         area = 0
-        for stanza in stanze:
+        for stanza in self.stanze:
             area += stanza.area()
         return area
 
-    def abitanti():
+    def abitanti(self):
         ab = 0
         for stanza in stanze:
             if hasattr(stanza,'abitante')
