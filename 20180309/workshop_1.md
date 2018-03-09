@@ -113,6 +113,32 @@ print (u"questo è qgis")
 
 --
 
+## formattazione delle stringhe
+
+il linguaggio dispone di [funzioni molto potenti](https://pyformat.info/) per assemblare tra loro le stringhe e formattare tipi non stringa (numeri, date)
+
+```python
+a = 'Paolo'
+b = "Verdi"
+c = 172
+d = 8.5676776
+
+# concatenazione
+print ("il mio cognome è " + b)
+print ("mi chiamo "+a+" "+b+" alto "+str(c)" cm ed ho percorso "+str(d)+" km")
+
+# metodo "vecchio"
+print ("il mio cognome è %s" % b)
+print ("mi chiamo %s %s alto %d cm ed ho percorso %.1f km" % (a,b,c,d))
+
+#metodo "nuovo"
+print ("mi chiamo {0} {1} alto {:d} cm ed ho percorso {:.1f} km".format(a,b,c,d))
+
+```
+
+
+--
+
 ## TIPO *Boolean*
 
 ```python
@@ -166,7 +192,7 @@ type(anno)
 
 ```
 
---
+---
 
 # I TIPI *STRUTTURATI*
 
