@@ -121,18 +121,20 @@ True
 False (None, [], {})
 
 # operatori
-
 not True # False
-
 True and True # True
-
 True and False # False
-
 False and False # False
-
 False or True # True
-
 not (True or False) and True #False
+
+1 == 1 operatore di uguaglianza
+1 != 1 operatore di diversità
+2 > 1  maggiore
+2 >= 1  maggiore o uguale
+1 < 2  minore
+1 <= 2  minore o uguale
+
 ```
 
 ---
