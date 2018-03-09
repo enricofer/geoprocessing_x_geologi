@@ -697,9 +697,9 @@ print (testo)
 
 # Esercitazione 4
 stampare un'albero di files e directory. uso delle funzioni os:
-[os.path()](https://docs.python.org/3.6/library/os.path.html)
-[os.walk()](https://docs.python.org/3.6/library/os.html#os.walk)
-[os.listdir()](https://docs.python.org/3.6/library/os.html#os.listdir)
+* [os.path()](https://docs.python.org/3.6/library/os.path.html)
+* [os.walk()](https://docs.python.org/3.6/library/os.html#os.walk)
+* [os.listdir()](https://docs.python.org/3.6/library/os.html#os.listdir)
 
 --
 
