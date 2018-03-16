@@ -3,8 +3,8 @@
 ## ORDINE DEI GEOLOGI DEL VENETO
 ### Riviera XX Settembre 23, Mestre (VE)
 
-* [lezione1: fondamenti di python](20180309/workshop_1.htm)
-* [lezione2: PYQGIS - script/espressioni/processing](20180317/workshop_2.htm)
+* [lezione1: fondamenti di python](https://enricofer.github.io/geoprocessing_x_geologi/20180309/workshop_1.htm)
+* [lezione2: PYQGIS - script/espressioni/processing](https://enricofer.github.io/geoprocessing_x_geologi/20180317/workshop_2.htm)
 * lezione3: plugins di QGIS e QT framework
 * lezione4: esercitazioni pratiche e lavoro di gruppo
 
