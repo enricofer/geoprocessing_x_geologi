@@ -34,8 +34,7 @@ il modulo di collegamento (*bindings*) si chiama PyQt e può essere importato in
 [documentazione API in python](http://python.qgis.org/api)
 
 * [QgisInterface](https://qgis.org/api/classQgisInterface.html): riferimenti dell'interfaccia utente:
-* [QgsProject.instance()](https://qgis.org/api/classQgisInterface.html): è un oggetto singolare (singleton) e gestisce l'oggetto progetto corrente
-* [QgsMapLayerRegistry.instance()](https://qgis.org/api/2.18/classQgsMapLayerRegistry.html): gestisce il registro dei layer caricati, in QGIS3 è incorporato in QgsProject()
+* [QgsProject.instance()](https://qgis.org/api/classQgisInterface.html): è un oggetto singolare (singleton) e gestisce l'oggetto progetto corrente. incorpora [QgsMapLayerRegistry](https://qgis.org/api/2.18/classQgsMapLayerRegistry.html) di QGIS2
 * [QgsMapCanvas()](https://qgis.org/api/classQgsMapCanvas.html): è accessibile da QgisInterface().mapCanvas() e gestisce la visualizzazione dei layer: sistemi di riferimento, zoom/pan, mapTools etc...
 * [QgsLayerInterface()](http://qgis.org/api/2.18/classQgsLegendInterface.html): accessibile da QgisInterface().layerInterface() gestisce la legenda dei layers
 * [QgsMapLayer()](https://qgis.org/api/classQgsMapLayer.html): si articola in QgsVectorLayer() e QgsRasterLayer() e gestisce la manipolazione dei layers
@@ -200,7 +199,7 @@ geom1.asJson() trasformazione in oggetto geometria di geojson
 
 [Dataset di esempio](doc/dataset.zip)
 
---
+---
 
 ## scripts
 
@@ -285,7 +284,7 @@ for feature in layer.getFeatures(): #accesso alle features
 print (informazioni)
 ```
 
---
+---
 
 ## funzioni personalizzate 
 
@@ -322,7 +321,7 @@ def mapCenter(value1,feature, parent):
   return QgsGeometry.fromPointXY(QgsPointXY(x,y))
 ```
 
---
+---
 
 ## script di processing
 
