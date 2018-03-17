@@ -23,6 +23,7 @@ il modulo di collegamento (*bindings*) si chiama PyQt e può essere importato in
 ## PyQgis
 
 ![diagramma delle classi](doc/diagramme_principal_low.png)
+
 [diagramma](https://raw.githubusercontent.com/webgeodatavore/qgis-class-diagram/master/diagramme_principal.png)
 
 ---
