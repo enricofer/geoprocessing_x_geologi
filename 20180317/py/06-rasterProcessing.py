@@ -2,6 +2,7 @@
 ##input=vector
 ##output=output vector
 
+from PyQt4.QtCore import QVariant
 from qgis.core import *
 from processing.tools.vector import VectorWriter
 
@@ -13,7 +14,7 @@ fields.append(QgsField('elevation', QVariant.Double))
 fields.append(QgsField('id_polyline', QVariant.Int))
 
 pointSamplewriter = VectorWriter(output, None, fields,
-                      QgsWkbTypes.PointGeometry, vectorLayer.crs())
+                      QgsWKBTypes.Point, vectorLayer.crs())
 
 features = processing.features(vectorLayer)
 for feat in features:
@@ -22,8 +23,8 @@ for feat in features:
         elevValue = dtmLayer.dataProvider().identify(point, QgsRaster.IdentifyFormatValue).results()[1]
         elevFeat['elevation'] = elevValue
         elevFeat['id_polyline'] = feat.id()
-        elevGeom = QgsGeometry.fromPointXY(point)
+        elevGeom = QgsGeometry.fromPoint(point)
         elevFeat.setGeometry(elevGeom)
         pointSamplewriter.addFeature(elevFeat)
 
-del writer
+del pointSamplewriter

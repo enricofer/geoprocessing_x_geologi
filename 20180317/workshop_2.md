@@ -241,23 +241,24 @@ from qgis.core import QGis, QgsPoint
 layer = iface.activeLayer() #caricamento
 if not layer or not layer.isValid():
   print "Layer non valido!"
-QgsMapLayerRegistry.instance().addMapLayer(layer) #registrazione
-informazioni=[]
-for feature in layer.getFeatures(): #accesso alle features
-    info = [feature.id()]
-    geom = feature.geometry()
-    if geom.type() == QGis.Point:
-        info.append("distanza")
-        info.append(geom.distance(QgsPoint(0,0)))
-    elif geom.type() == QGis.Line:
-        info.append("Lunghezza")
-        info.append(geom.length())
-    elif geom.type() == QGis.Polygon:
-        info.append("Area")
-        info.append(geom.area)
-    info += feature.attributes()
-    informazioni.append(info)
-print informazioni
+else:
+    #QgsMapLayerRegistry.instance().addMapLayer(layer) #registrazione
+    informazioni=[]
+    for feature in layer.getFeatures(): #accesso alle features
+        info = [feature.id()]
+        geom = feature.geometry()
+        if geom.type() == QGis.Point:
+            info.append("distanza")
+            info.append(geom.distance(QgsGeometry.fromPoint(QgsPoint(0.0,0.0))))
+        elif geom.type() == QGis.Line:
+            info.append("Lunghezza")
+            info.append(geom.length())
+        elif geom.type() == QGis.Polygon:
+            info.append("Area")
+            info.append(geom.area)
+        info += feature.attributes()
+        informazioni.append(info)
+    print informazioni
 ```
 ```python
 #versione per QGIS3
@@ -377,11 +378,14 @@ del writer
 
 --
 
+[dtm](py/antelao.tif)
+
 ```python
 ##dtm=raster
 ##input=vector
 ##output=output vector
 
+from PyQt4.QtCore import QVariant
 from qgis.core import *
 from processing.tools.vector import VectorWriter
 
@@ -393,7 +397,7 @@ fields.append(QgsField('elevation', QVariant.Double))
 fields.append(QgsField('id_polyline', QVariant.Int))
 
 pointSamplewriter = VectorWriter(output, None, fields,
-                      QgsWkbTypes.PointGeometry, vectorLayer.crs())
+                      QgsWKBTypes.Point, vectorLayer.crs())
 
 features = processing.features(vectorLayer)
 for feat in features:
@@ -402,11 +406,11 @@ for feat in features:
         elevValue = dtmLayer.dataProvider().identify(point, QgsRaster.IdentifyFormatValue).results()[1]
         elevFeat['elevation'] = elevValue
         elevFeat['id_polyline'] = feat.id()
-        elevGeom = QgsGeometry.fromPointXY(point)
+        elevGeom = QgsGeometry.fromPoint(point)
         elevFeat.setGeometry(elevGeom)
         pointSamplewriter.addFeature(elevFeat)
 
-del writer
+del pointSamplewriter
 
 ```
 
