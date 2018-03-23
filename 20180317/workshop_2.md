@@ -88,12 +88,12 @@ for feature in layer.getFeatures(): #tutte le feature del layer
 
 for feature in layer.selectedFeatures(): #tutte le features attualmente selezionate
     #qualinque azione da iterare per ogni feature
-    
+
 exp = QgsExpression("toponimo ILIKE '%lago%'")
 request = QgsFeatureRequest(exp)
 for feature in layer.getFeatures(request): #solo le feature che corrispondono all'espressione
     #qualinque azione da iterare per ogni feature
-    
+
 ```
 
 --
@@ -286,7 +286,7 @@ print (informazioni)
 
 ---
 
-## funzioni personalizzate 
+## funzioni personalizzate
 
 [Documentazione ufficiale](https://docs.qgis.org/2.18/en/docs/user_manual/working_with_vector/expression.html#function-editor)
 ![expressions](doc/expressions.png)
@@ -361,11 +361,11 @@ from qgis.core import *
 from processing.tools.vector import VectorWriter
 
 vectorLayer = processing.getObject(input)
- 
+
 provider = vectorLayer.dataProvider()
 
 writer = VectorWriter(output, None, vectorLayer.pendingFields(),
-                      QGis., vectorLayer.crs())
+                      provider.geometryType(), vectorLayer.crs())
 
 features = processing.features(vectorLayer)
 for feat in features:
@@ -419,7 +419,7 @@ del writer
 ```python
 >>> import processing
 # eseguire un algoritmo
->>> processing.runalg('nome algoritmo', par1, par2, ..., parN) 
+>>> processing.runalg('nome algoritmo', par1, par2, ..., parN)
 
 # lista degli algoritmi disponibili
 >>> processing.alglist()
@@ -438,7 +438,7 @@ del writer
 ##nodi=output vector
 ##grafo=output vector
 
-from qgis.core import QgsGeometry, QgsField, QgsFeature, QGis 
+from qgis.core import QgsGeometry, QgsField, QgsFeature, QGis
 from PyQt4.QtCore import QVariant
 from processing.tools.vector import VectorWriter
 
@@ -452,8 +452,8 @@ def aggiungi_nodo(nuovo_nodo):
 linee_layer = processing.getObject(Linee)
 
 grafo_fields = [
-    QgsField("rif_id", QVariant.Int), 
-    QgsField("in_id", QVariant.Int), 
+    QgsField("rif_id", QVariant.Int),
+    QgsField("in_id", QVariant.Int),
     QgsField("out_id", QVariant.Int)
 ]
 grafo_writer = VectorWriter(grafo, None, grafo_fields, QGis.WKBMultiLineString, linee_layer.crs())
