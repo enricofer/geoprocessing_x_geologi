@@ -6,7 +6,7 @@
 * [lezione1: fondamenti di python](https://enricofer.github.io/geoprocessing_x_geologi/20180309/workshop_1.htm)
 * [lezione2: PYQGIS - script/espressioni/processing](https://enricofer.github.io/geoprocessing_x_geologi/20180317/workshop_2.htm)
 * [lezione3: plugins di QGIS e QT framework](https://enricofer.github.io/geoprocessing_x_geologi/20180323/workshop_3.htm)
-* lezione4: esercitazioni pratiche e lavoro di gruppo
+* [lezione4: esercitazioni pratiche e lavoro di gruppo](https://enricofer.github.io/geoprocessing_x_geologi/20180413/workshop_4.htm)
 
 (C)2018 Enrico Ferreguti – enricofer@gmail.com
 

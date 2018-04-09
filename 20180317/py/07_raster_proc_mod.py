@@ -12,8 +12,9 @@ dtmLayer = processing.getObject(dtm)
 measureStep = measure
 
 fields=QgsFields()
+fields.append(QgsField('id_poly', QVariant.Int))
 fields.append(QgsField('elevation', QVariant.Double))
-fields.append(QgsField('id_polyline', QVariant.Int))
+fields.append(QgsField('step', QVariant.Double))
 
 pointSamplewriter = VectorWriter(output, None, fields,
                       QgsWKBTypes.Point, vectorLayer.crs())
@@ -26,7 +27,8 @@ for feat in features:
         elevFeat = QgsFeature(fields)
         elevValue = dtmLayer.dataProvider().identify(point, QgsRaster.IdentifyFormatValue).results()[1]
         elevFeat['elevation'] = elevValue
-        elevFeat['id_polyline'] = feat.id()
+        elevFeat['step'] = currentLen
+        elevFeat['id_poly'] = feat.id()
         elevGeom = QgsGeometry.fromPoint(point)
         elevFeat.setGeometry(elevGeom)
         pointSamplewriter.addFeature(elevFeat)
