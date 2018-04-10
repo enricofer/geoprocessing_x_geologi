@@ -228,7 +228,7 @@ la procedura di interrogazione può essere verificata creando uno script utente 
 
 bisogna adesso passare all'implementazione dei comportamenti previsti per il plugin. Il flusso di operazioni previsto è:
 1. click sul bottone per attivare lo strumento di lettura delle coordinate di puntamento
-2. campionamento delle coordinate ottenute tramite la funzione "ottieni_elevazione" appena creata 
+2. campionamento delle coordinate ottenute tramite la funzione "ottieni_elevazione" appena creata
 3. scrittura del risultato sulle finestre di testo
 
 La classe che permette di intercettare un evento sullo schermo e: [QgsMapTool](https://qgis.org/api/classQgsMapTool.html). La classe restituisce ai metodi canvasPressEvent, canvasMoveEvent, canvasReleaseEvent e canvasDoubleClickEvent i dettagli sull'evento intercettato (per esempio le coordinate schermo)
@@ -238,18 +238,18 @@ Dovremo quindi definire una classe personalizzata che ci restituirà la posizion
 
 ## modifica del file altimetria_dockwidget.py
 
-aggiungere la classe che eredita *QgsMapTool* 
+aggiungere la classe che eredita *QgsMapTool*
 quando viene cliccato lo schermo viene chiamata la funzione canvasReleaseEvent, lo strumento comunica la posizione e l'elevazione tramite il segnale *catturaElevazione*
 
 ```python
 class intercetta(QgsMapTool):
-    
+
     catturaElevazione = pyqtSignal(QgsPointXY,float)
-    
+
     def __init__(self,iface):
         self.iface = iface
         super(intercetta, self).__init__(iface.mapCanvas())
-    
+
     def canvasDoubleClickEvent(self, event):
         puntoDoppioClick = event.mapPoint()
         schermo = self.iface.mapCanvas().extent()
@@ -291,3 +291,58 @@ modificare il metodo costruttore nella riga 227 file altimetria.py
 self.dockwidget = altimetriaDockWidget(self.iface)
 ```
 [plugin installabile](doc/altimetria.zip)
+
+---
+
+# collaborare allo sviluppo del software open source
+
+--
+
+## la piattaforma github
+
+[Github](https://github.com/) (*Ghi-tab* per i non italiani) è una piattaforma web che permette agli sviluppatori di conservare e pubblicare i codici sorgenti dei propri programmi, senza perdere traccia delle versioni del codice stesso. Nel contempo permette a gruppi di sviluppatori di lavorare simultaneamente sullo stesso progetto evitando conflitti.
+E' basato su Git, il potente strumento di versionamento creato da Linus Torvarlds, il creatore di Linux, per gestire lo sviluppo collaborativo del sistema operativo open source.
+* Git è uno strumento a linea di comando, la cui comprensione esula dagli obiettivi del corso. Per approfondimenti si può fare riferimento ad uno dei tanti tutorial presenti in internet: https://www.slideshare.net/stefanovalle/guida-git
++ E' ottimizzato per tenere traccia delle modifiche di file testo a livello di riga (non va bene quindi per file binari o per file di testo con poche righe)
+
+--
+
+## Git
+
+per facilitare l'interazione dell'utente, github mette a disposizione Github desktop (disponibile per MacOS e Windows), che permette di gestire con facilità i vari flussi di lavoro senza necessariamente conoscere Git. E' comunque importante comprendere i principi di funzionamento di Git:
+
+![](doc/git-transport.png)
+
+--
+
+## Lessico di git/github
+
+* *repository*: archivio di files e directory gestito da git. può essere locale o remoto
+* *commit*: insieme coordinato di modifiche che l'utente registra sul repository
+* *branch*: uno stato del repository che viene memorizzato dall'utente separatamente da altri branch. Esistono dei branch di sistema (master, origin etc...) e dei branch utente
+* *diff*: operazione che mette in evidenza le modifiche di riga tra branch
+* *merge*: operazione che permette di fondere tra loro due branch (per esempio un branch di sviluppo nel branch master) mettendo in evidenza eventuali conflitti
+* *clone*: operazioone di clonazione in locale di un repository remoto
+* *push*: operazione con la quale si si conferisce (submit) un branch locale ad un repository remoto tenendo condo dei conflitti tra versioni
+* *pull*: operazione con la quale si scarica in locale un repository remoto
+* *pull request*: operazione con la quale un utente propone la modifica di un repository
+
+--
+
+## github desktop
+
+E' fondamentalmente un'interfaccia grafica di Git integrata con il servizio di Github
+![](doc/githubDesktop1.png)
+
+--
+
+## Esercitazione di Github
+
+* accreditarsi su Github, scaricare ed installare Github desktop
+* inizializzare un repository
+* clonare un repository
+* modificare i files / verificare le differenze / realizzare un commit
+* creare un branch
+* fondere (merge) due branch
+* pubblicare un repository
+* inviare una pull request (PR)
