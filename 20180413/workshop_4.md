@@ -175,7 +175,7 @@ la chiamata restituisce la seguente risposta:
 Per interrogare il geoportale verrà utilizzato il modulo [requests](http://docs.python-requests.org/en/master/) che permette di effettuare una richesta http, ricevere ed analizzarne la risposta direttamente dal codice python:
 
 ```python
-import requests:
+import requests
 
 def ottieni_elevazione(campionamento,contesto,sr): #QgsPoint, QgsRectangle, QgsCoordinateReferenceSystem
     srid = sr.postgisSrid()
